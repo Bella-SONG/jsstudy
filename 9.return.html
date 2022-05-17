@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function ms(a, b) {
+				let result = 60000 * a + 1000 * b;
+				return result;
+			}
+			function sale(x, y) {
+				let cost = x * 0.9;
+				if (y == true) {
+					return parseFloat(cost.toFixed(2) - 1.5);
+				} else if (y == false) {
+					return parseFloat(cost.toFixed(2));
+				}
+			}
+			console.log(sale(70, false));
+			console.log(sale(10, true));
+		</script>
+	</body>
+</html>

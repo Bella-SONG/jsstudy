@@ -1,0 +1,73 @@
+.list-group {
+	height: 0;
+	overflow: hidden;
+	transition: all 0.2s linear 0s;
+}
+.black-bg {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 5;
+	padding: 30px;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.5s ease-in 0s;
+}
+.white-bg {
+	background: white;
+	border-radius: 5px;
+	padding: 30px;
+}
+.show {
+	height: 250px;
+}
+.show-modal {
+	visibility: visible;
+	opacity: 1;
+}
+
+.main-bg {
+	padding: 100px 20px;
+	background: lightgrey;
+}
+
+.bg-dark {
+	cursor: pointer;
+}
+
+.slide-container {
+	width: 300vw;
+	transition: all 0.1s linear 0s;
+}
+.slide-box {
+	width: 100vw;
+	float: left;
+}
+.slide-box img {
+	width: 100%;
+}
+.slide {
+	overflow: hidden;
+}
+.move1 {
+	transform: translateX(-100vw) !important;
+}
+.move2 {
+	transform: translateX(-200vw) !important;
+}
+.prevmove {
+	transform: translateX(100vw) !important;
+}
+.nextmove {
+	transform: translateX(-100vw) !important;
+}
+.navbar {
+	position: fixed;
+	width: 100%;
+	z-index: 5;
+}
+.navbar-brand {
+	font-size: 30px;
+	transition: all 1s;
+}

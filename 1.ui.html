@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>JS1</title>
+		<link rel="stylesheet" href="1.ui.css" />
+	</head>
+	<body>
+		<div class="alert-box">
+			<p class="title">알림창</p>
+			<button id="close">close</button>
+		</div>
+		<button onclick="알림창('block','아이디를 입력하세요')">버튼</button>
+		<button onclick="알림창('block','비밀번호를 입력하세요')">버튼2</button>
+		<script>
+			/*
+			function alertOpen(구멍) {
+				document.querySelector(".alert-box").style.display = 구멍;
+			}
+			function alertClose() {
+				document.querySelector(".alert-box").style.display = "none";
+			}
+			*/
+			const close = document.getElementById("close");
+			close.addEventListener("click", function () {
+				document.querySelector(".alert-box").style.display = "none";
+			});
+			function 알림창(효과, 효과2) {
+				document.querySelector(".alert-box").style.display = 효과;
+				document.querySelector(".title").innerHTML = 효과2;
+			}
+			/*
+			function plus(a) {
+				2 + a;
+			}
+			plus(1);
+			*/
+		</script>
+	</body>
+</html>

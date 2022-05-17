@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
+	<script>
+		function game369(x) {
+			if (x % 9 == 0) {
+				console.log("박수박수");
+			} else if (x % 3 == 0) {
+				console.log("박수");
+			} else {
+				console.log("통과");
+			}
+		}
+		game369(9);
+		game369(11);
+		game369(6);
+
+		function pass(a, b) {
+			if (a + b >= 120 && a > 40 && b > 40) {
+				console.log("합격");
+			} else {
+				console.log("불합격");
+			}
+		}
+
+		pass(70, 70);
+		pass(30, 100);
+		pass(50, 50);
+
+		function game(a) {
+			if (a % 10 == 3 || a % 10 == 6 || a % 10 == 9) {
+				console.log("박수");
+			} else {
+				console.log("통과");
+			}
+		}
+		game(23);
+		game(17);
+		game(28);
+
+		function pass2(a) {
+			if (!(a > 0 && a < 100)) {
+				alert("장난까지마라");
+			}
+		}
+		pass2(90);
+	</script>
+</html>

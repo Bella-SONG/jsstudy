@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>array method</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<style>
+			.hide {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row"></div>
+		</div>
+
+		<div class="container">
+			<button class="btn btn-danger">더보기</button>
+		</div>
+		<br />
+		<div class="container">
+			<button class="btn btn-danger" id="price">가격순 정렬</button>
+		</div>
+		<br />
+		<div class="container">
+			<button class="btn btn-danger" id="text">가나다순 정렬</button>
+		</div>
+		<br />
+		<div class="container">
+			<button class="btn btn-danger" id="costFilter">6만원 이하</button>
+		</div>
+
+		<script>
+			var products = [
+				{ id: 0, price: 70000, title: "Blossom Dress" },
+				{ id: 1, price: 50000, title: "Springfield Shirt" },
+				{ id: 2, price: 60000, title: "Black Monastery" },
+			];
+			console.log(typeof products);
+			var lessCost = products.filter(a => {
+				return a.price <= 60000;
+			});
+			var array = [7, 3, 5, 2, 40];
+			//sort는 문자열순으로 배열 그래서 하단처럼 하는 것
+			/*
+			array.sort(function (a, b) {
+				return a - b;
+				// return b - a; //역순
+			});
+			console.log(array);
+			   */
+
+			//filter
+			//원하는 자료만 필터링 하고싶을 때
+			//필터는 원본을 변형시키지 않기때문에 새 변수안에 넣어주어야 한다.
+			var newArray = array.filter(function (a) {
+				return a < 4;
+			});
+			console.log(newArray);
+			//map
+			//안의 자료들을 전부 변형시킬때
+			var newArray2 = array.map(function (a) {
+				return a * 1000;
+			});
+			console.log(newArray2);
+			//환율이라던가 이런거에도 유용할듯
+			//sort는 원형을 변화시킨다, map/filter는 그렇지 않음.
+
+			//가격순 정렬
+			const priceSort = document.querySelector("#price");
+			priceSort.addEventListener("click", function () {
+				products.sort((a, b) => {
+					return a.price - b.price;
+				});
+				row.innerHTML = "";
+				card(products);
+			});
+
+			//가나다순 정렬
+			const textSort = document.querySelector("#text");
+			textSort.addEventListener("click", function () {
+				products.sort((a, b) => {
+					return a.title.localeCompare(b.title);
+				});
+
+				row.innerHTML = "";
+				card(products);
+			});
+			const costSort = document.querySelector("#costFilter");
+			costSort.addEventListener("click", function () {
+				row.innerHTML = "";
+				card(lessCost);
+			});
+
+			let row = document.querySelector(".row");
+			let count = 0;
+
+			//방법1
+			// for (i = 0; i < 3; i++) {
+			// 	var card = `<div class="col-sm-4">
+			//       <img src="https://via.placeholder.com/600" class="w-100" />
+			//       <h5>${products[i].title}</h5>
+			//       <p>가격 : ${products[i].price}</p>
+			//     </div>`;
+			// 	row.insertAdjacentHTML("beforeend", card);
+			// }
+
+			//방법2 - 재사용성을 높이기위해 함수로 만들었음
+			function card(e) {
+				e.forEach(a => {
+					var card = `<div class="col-sm-4">
+			  <img src="https://via.placeholder.com/600" class="w-100" />
+			  <h5>${a.title}</h5>
+			  <p>가격 : ${a.price}</p>
+			  </div>`;
+					row.insertAdjacentHTML("beforeend", card);
+				});
+			}
+			card(products);
+		</script>
+
+		<script>
+			const moreBtn = document.querySelector(".btn-danger");
+
+			moreBtn.addEventListener("click", function () {
+				count++;
+				if (count == 1) {
+					fetch("https://codingapple1.github.io/js/more1.json")
+						.then(res => res.json())
+						.then(function (data) {
+							console.log(data);
+							card(data);
+						})
+						.catch(function (error) {
+							console.log("실패함");
+						});
+				}
+				if (count == 2) {
+					fetch("https://codingapple1.github.io/js/more2.json")
+						.then(res => res.json())
+						.then(function (data) {
+							console.log(data);
+							card(data);
+						})
+						.catch(function (error) {
+							console.log("실패함");
+						});
+				}
+			});
+		</script>
+	</body>
+</html>

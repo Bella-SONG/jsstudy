@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var 예금액 = 10000;
+			var 미래예금액 = 0;
+			if (예금액 >= 50000) {
+				미래예금액 = 예금액 * 1.2 * 1.2;
+			} else if (예금액 < 50000) {
+				미래예금액 = 예금액 * 1.15 * 1.15;
+			}
+			console.log(미래예금액);
+
+			var first = 360;
+			var last = first + first * (2 / 3) + first * (2 / 3) * (2 / 3);
+			console.log(last);
+		</script>
+		<p>태조 이성계가 태어난 년도는?</p>
+		<input type="text" id="answer" />
+		<button id="send-answer">제출</button>
+		<script>
+			var answer = document.querySelector("#answer");
+			var button = document.querySelector("#send-answer");
+			var counter = 0;
+			button.addEventListener("click", function () {
+				counter++;
+				if (answer.value == 1335) {
+					alert("성공");
+				} else if (counter <= 3 && answer.value != 1335) {
+					alert("멍청이");
+				}
+			});
+
+			//변수를 언제 만들지 잘 결정해야되는게, <script>안에 그냥 있는 코드는 새로고침시 1회 실행됩니다. 이벤트리스너 안에 있는 코드는 이벤트 발동시 1회 실행됩니다.
+		</script>
+	</body>
+</html>
