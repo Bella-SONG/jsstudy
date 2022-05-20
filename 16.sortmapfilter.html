@@ -33,50 +33,41 @@
 		</div>
 		<br />
 		<div class="container">
-			<button class="btn btn-danger" id="costFilter">6만원 이하</button>
+			<input type="text" id="costFill" />
+			<button class="btn btn-danger" id="costFilter">
+				<span>가격입력</span> 이하
+			</button>
 		</div>
-
+		<br />
+		<div class="container">
+			<button class="btn btn-danger" id="backOrg">되돌리기</button>
+		</div>
 		<script>
+			let row = document.querySelector(".row");
+			let count = 0;
+
 			var products = [
 				{ id: 0, price: 70000, title: "Blossom Dress" },
 				{ id: 1, price: 50000, title: "Springfield Shirt" },
 				{ id: 2, price: 60000, title: "Black Monastery" },
 			];
 			console.log(typeof products);
-			var lessCost = products.filter(a => {
-				return a.price <= 60000;
-			});
-			var array = [7, 3, 5, 2, 40];
-			//sort는 문자열순으로 배열 그래서 하단처럼 하는 것
-			/*
-			array.sort(function (a, b) {
-				return a - b;
-				// return b - a; //역순
-			});
-			console.log(array);
-			   */
 
-			//filter
-			//원하는 자료만 필터링 하고싶을 때
-			//필터는 원본을 변형시키지 않기때문에 새 변수안에 넣어주어야 한다.
-			var newArray = array.filter(function (a) {
-				return a < 4;
-			});
-			console.log(newArray);
-			//map
-			//안의 자료들을 전부 변형시킬때
-			var newArray2 = array.map(function (a) {
-				return a * 1000;
-			});
-			console.log(newArray2);
-			//환율이라던가 이런거에도 유용할듯
-			//sort는 원형을 변화시킨다, map/filter는 그렇지 않음.
+			//products를 복제
+			var products2 = Object.assign([], products);
+			console.log(products2);
 
 			//가격순 정렬
 			const priceSort = document.querySelector("#price");
 			priceSort.addEventListener("click", function () {
+				count++;
 				products.sort((a, b) => {
-					return a.price - b.price;
+					if (count % 2 == 1) {
+						return a.price - b.price;
+					}
+					if (count % 2 == 0) {
+						return b.price - a.price;
+					}
 				});
 				row.innerHTML = "";
 				card(products);
@@ -85,23 +76,41 @@
 			//가나다순 정렬
 			const textSort = document.querySelector("#text");
 			textSort.addEventListener("click", function () {
+				count++;
 				products.sort((a, b) => {
-					return a.title.localeCompare(b.title);
+					if (count % 2 == 1) {
+						return a.title.localeCompare(b.title);
+						// return b.title.localeCompare(a.title); //역순
+					} else if (count % 2 == 0) {
+						return b.title.localeCompare(a.title);
+					}
 				});
-
 				row.innerHTML = "";
 				card(products);
 			});
+
+			//가격필터
 			const costSort = document.querySelector("#costFilter");
+			const costInput = document.querySelector("#costFilter > span");
+			const costFill = document.querySelector("#costFill");
+
 			costSort.addEventListener("click", function () {
+				let lessCost = products.filter(a => {
+					return a.price <= parseFloat(costFill.value);
+				});
 				row.innerHTML = "";
+				costInput.innerHTML = costFill.value;
 				card(lessCost);
 			});
 
-			let row = document.querySelector(".row");
-			let count = 0;
+			//정렬 원래대로 원상복구
+			const backOrg = document.querySelector("#backOrg");
+			backOrg.addEventListener("click", function () {
+				row.innerHTML = "";
+				card(products2);
+			});
 
-			//방법1
+			//방법1 for
 			// for (i = 0; i < 3; i++) {
 			// 	var card = `<div class="col-sm-4">
 			//       <img src="https://via.placeholder.com/600" class="w-100" />
@@ -111,7 +120,7 @@
 			// 	row.insertAdjacentHTML("beforeend", card);
 			// }
 
-			//방법2 - 재사용성을 높이기위해 함수로 만들었음
+			//방법2 forEach + 재사용성을 높이기위해 함수로 만들었음
 			function card(e) {
 				e.forEach(a => {
 					var card = `<div class="col-sm-4">
@@ -123,9 +132,8 @@
 				});
 			}
 			card(products);
-		</script>
 
-		<script>
+			//더보기 버튼 클릭
 			const moreBtn = document.querySelector(".btn-danger");
 
 			moreBtn.addEventListener("click", function () {
@@ -153,6 +161,34 @@
 						});
 				}
 			});
+		</script>
+		<script>
+			/*이론*/
+			var array = [7, 3, 5, 2, 40];
+			//sort는 문자열순으로 배열 그래서 하단처럼 하는 것
+			/*
+			array.sort(function (a, b) {
+				return a - b;
+				// return b - a; //역순
+			});
+			console.log(array);
+			   */
+
+			//filter
+			//원하는 자료만 필터링 하고싶을 때
+			//필터는 원본을 변형시키지 않기때문에 새 변수안에 넣어주어야 한다.
+			var newArray = array.filter(function (a) {
+				return a < 4;
+			});
+			console.log(newArray);
+			//map
+			//안의 자료들을 전부 변형시킬때
+			var newArray2 = array.map(function (a) {
+				return a * 1000;
+			});
+			console.log(newArray2);
+			//환율이라던가 이런거에도 유용할듯
+			//sort는 원형을 변화시킨다, map/filter는 그렇지 않음.
 		</script>
 	</body>
 </html>
