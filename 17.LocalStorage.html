@@ -183,7 +183,6 @@
 						if (
 							꺼낸거.filter(e => e.titleData === title.titleData).length > 0
 						) {
-							console.log(꺼낸거[b]);
 							꺼낸거[b].num++;
 							localStorage.setItem("cart", JSON.stringify(꺼낸거));
 						} else {
@@ -197,9 +196,10 @@
 				});
 			});
 
+			/* 응용 포인트 */
+			//중복되는 내용은 삭제하기 -성공
+			//누른만큼 개수가 증가하게 하기 -성공
 			//이벤트 버블링해서 이벤트로 바꿔보기
-			//누른만큼 개수가 증가하게 하기
-			//중복되는 내용은 삭제하기
 		</script>
 	</body>
 </html>
