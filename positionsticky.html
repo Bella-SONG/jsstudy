@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Position Sticky</title>
+		<style>
+			body {
+				background: grey;
+				height: 3000px;
+			}
+			.grey {
+				background: lightgrey;
+				height: 2000px;
+				margin-top: 500px;
+			}
+			.image {
+				float: right;
+				width: 400px;
+				top: 100px;
+				position: sticky;
+				/* 조건부로 fixed */
+			}
+			.text1 {
+				float: left;
+				width: 300px;
+			}
+			.text {
+				width: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="grey">
+			<div class="image">
+				<img src="0.jpg" alt="풍경이미지" />
+			</div>
+			<div class="text1">
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis
+				architecto voluptate corporis ullam odit voluptatum voluptates alias
+				perferendis eius sint id ipsum, dolor sequi nihil vitae ratione
+				doloribus nisi ipsam?
+			</div>
+			<div style="clear: both"></div>
+			<div class="text">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus explicabo
+				error iusto suscipit numquam, tempore nulla! Aliquid eveniet provident
+				quis non dolor quae molestias, laboriosam, placeat accusantium, libero
+				doloribus vitae!
+			</div>
+			<div style="clear: both"></div>
+			<div class="text" style="margin-top: 300px">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus explicabo
+				error iusto suscipit numquam, tempore nulla! Aliquid eveniet provident
+				quis non dolor quae molestias, laboriosam, placeat accusantium, libero
+				doloribus vitae!
+			</div>
+		</div>
+	</body>
+</html>
