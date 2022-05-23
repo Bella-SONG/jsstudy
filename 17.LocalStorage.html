@@ -178,10 +178,11 @@
 						var 꺼낸거 = JSON.parse(localStorage.cart);
 						// console.log(title);
 						// console.log(꺼낸거);
-						// for (let i = 0; i < 꺼낸거.length; i++) {
-						//반복문이 여기 들어올 자리가 아니었음
 						if (
-							꺼낸거.filter(e => e.titleData === title.titleData).length > 0
+							//방법1
+							// 꺼낸거.filter(e => e.titleData === title.titleData).length > 0
+							//방법2
+							꺼낸거.some(e => e.titleData === title.titleData)
 						) {
 							꺼낸거[b].num++;
 							localStorage.setItem("cart", JSON.stringify(꺼낸거));
