@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AppleMusic UI</title>
+		<link rel="stylesheet" href="main.css" />
+	</head>
+	<body>
+		<div class="card-background">
+			<div class="card-box"><img src="images/card1.png" alt="" /></div>
+			<div class="card-box"><img src="images/card2.png" alt="" /></div>
+			<div class="card-box"><img src="images/card3.png" alt="" /></div>
+		</div>
+		<script>
+			window.addEventListener("scroll", function () {
+				var height = window.scrollY;
+				console.log(height);
+
+				var cardBox = document.querySelectorAll(".card-box");
+
+				//650~1150까지 스크롤바를 내리면 첫번째 카드의 opacity 1~0으로 서서히 변경
+				var Y = (-1 / 500) * height + 23 / 10;
+				/*
+			  y = a* 높이 + b;
+			  1 = a* 650 + b;
+			  0 = a* 1150 + b;
+			  a = -1/500;
+			  b = 115/50;
+			     */
+				var Z = (-1 / 5000) * height + 113 / 100;
+				cardBox[0].style.opacity = Y;
+				cardBox[0].style.transform = `scale(${Z})`;
+			});
+		</script>
+	</body>
+</html>
